@@ -6,13 +6,13 @@ const FooterPanel = () => {
     <div>
       {/* Bottom Panel Content */}
       <div>
-        <p>Powered by:</p>
-        <img
-          src={aphrc_logo}
-        
-          alt="Logo"
-          style={{ height: '2rem' }}
-        />
+        <span style={{ display: 'inline-flex' }}>
+          {/* <p>© 2021 African Population and Health Research Center</p> */}
+
+          <p class="text-gray-500 dark:text-gray-400" style={{marginTop:'0.8rem', fontSize:'12px'}}>Powered by: </p>
+
+          <img src={aphrc_logo} alt="Logo" style={{ height: '3rem' }} />
+        </span>
       </div>
     </div>
   )
