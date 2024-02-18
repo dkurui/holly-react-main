@@ -5,7 +5,18 @@ import FaqsPage from '@/routes/faqs'
 import HomePage from '@/routes/home'
 import SupportPage from '@/routes/support'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import DashboardHome from './components/dashboard/dahsboard-home';
+import DashboardMain from './components/dashboard/dashboard-main';
+import Analytics from './components/dashboard/dashboard-pages/analytics';
+import Reports from './components/dashboard/dashboard-pages/reports';
+import Reviewers from './components/dashboard/dashboard-pages/reviewers';
+import Indexers from './components/dashboard/dashboard-pages/indexers';
+import Journals from './components/dashboard/dashboard-pages/journals';
+import Repositories from './components/dashboard/dashboard-pages/repositories';
+import NewsUpdates from './components/dashboard/dashboard-pages/news-updates';
+
+
+
+
 
 export default function App() {
   /**
@@ -17,6 +28,11 @@ export default function App() {
   const basename = import.meta.env.BASE_URL
 
 
+
+
+
+
+
   return (
     <BrowserRouter basename={basename}>
       <ScrollToTop>
@@ -26,7 +42,15 @@ export default function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="faqs" element={<FaqsPage />} />
           <Route path="support" element={<SupportPage />} />
-          <Route path="dashboard-home" element={<DashboardHome />} />
+          <Route path="dashboard-main" element={<DashboardMain />} />
+          <Route path="analytics" element={<Analytics />} />         
+          <Route path="reports" element={<Reports />} />         
+          <Route path="reviewers" element={<Reviewers />} />  
+          <Route path="indexers" element={<Indexers />} />         
+          <Route path="journals" element={<Journals />} />         
+          <Route path="repositories" element={<Repositories />} />         
+          <Route path="news" element={<NewsUpdates />} />         
+
         </Routes>
       </ScrollToTop>
     </BrowserRouter>

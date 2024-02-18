@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+
 import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar'
 import {
   MdOutlineInventory,
@@ -14,12 +15,14 @@ import { FaBoxArchive, FaChartSimple, FaHandshakeAngle, FaRegCreditCard } from '
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiTwotoneSetting } from 'react-icons/ai'
 import { LuNewspaper } from 'react-icons/lu'
+import { GrAnalytics } from 'react-icons/gr'
 
-import afrijour_logo from '../../assets/afrijour-logo.png'
+import afrijour_logo from '../../../assets/afrijour-logo.png'
 
 // Main navigation links
 const mainNavLinks = [
   { to: '/dashboard-main', label: 'Dashboard', icon: 'MdSpaceDashboard' },
+  { to: '/analytics', label: 'Analytics', icon: 'GrAnalytics' },
   // { to: '/admin', label: 'Admin', icon: 'MdSpaceDashboard' },
   { to: '/journals', label: 'Journals', icon: 'GoPackage' },
   // { to: '/partners', label: 'Partners', icon: 'FaHandshakeAngle' },
@@ -32,6 +35,7 @@ const mainNavLinks = [
 ]
 const iconMapping = {
   MdSpaceDashboard: MdSpaceDashboard,
+  GrAnalytics: GrAnalytics,
   RiMoneyDollarCircleFill: RiMoneyDollarCircleFill,
   GoPackage: GoPackage,
   FaHandshakeAngle: FaHandshakeAngle,
@@ -47,7 +51,7 @@ const iconMapping = {
   LuNewspaper: LuNewspaper,
 }
 
-const DashboardTopPanel = () => {
+const LeftPanel = () => {
   const isActiveLink = (path) => {
     return location.pathname === path
   }
@@ -58,26 +62,55 @@ const DashboardTopPanel = () => {
   }
 
   return (
-    <div
-      className="container-fluid d-flex justify-content-end align-items-start"
-      style={{
-        backgroundColor: 'red',
-        height: '10vh', // Occupies the entire height of the viewport
-        padding: '2rem', // Margin of 2rem for the content
-        width: '100vw',
-      }}
-    >
-      <div className="column">{/* Left Panel with Menu Items */}</div>
-      <div className="column">
-        {/* Main Content Area */}
-        <div className="col-lg-10">
-          {/* <div style={{ marginTop: '2rem', marginLeft: '12.5rem', width: 'min-content' }}> */}
-            <p>hdjdlkdfklsdfllsadfsdafldfksdajklfklsdajfkjsdfdh</p>
-          {/* </div> */}
-        </div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div>
+        <img
+          src={afrijour_logo}
+          className={'h-20 w-20 object-contain'}
+          alt="Logo"
+          // call a function to redirect to home
+          onClick={goHome}
+          style={{ cursor: 'pointer', height: '5rem' }}
+        />
       </div>
+      {/* Left Panel Content */}
+      <div style={{ marginTop: '4rem', width: 'min-content' }}>
+        <Menu
+          menuItemStyles={{
+            button: ({ level, active, disabled }) => ({
+              color: disabled ? '#fff' : '#000',
+              backgroundColor: active ? '#000' : 'transparent',
+              '&:hover': {
+                color: 'black',
+                borderRadius: '25px 0 0 25px',
+                fontWeight: 'bold',
+              },
+            }),
+            label: () => ({
+              color: 'rgb(var(--accessible-color))',
+            }),
+          }}
+        >
+          {mainNavLinks.map(({ to, label, icon }) => (
+            <NavLink key={to} to={to} active="active" style={{ fontWeight: '500' }}>
+              <MenuItem
+                className={`menu-item ${isActiveLink(to) ? 'menu-item-active' : ''}`}
+                icon={React.createElement(iconMapping[icon], {
+                  className: `icon text-3xl ${isActiveLink(to) ? 'active-link' : ''}`,
+                })}
+                //   onClick={() => setSidebarCollapsed(false)}
+              >
+                <span className="text">{label}</span>
+              </MenuItem>
+            </NavLink>
+          ))}
+
+          {/* <hr style={{ margin: '1rem 0', width: '90%', border: '1px solid #fefefe' }} /> */}
+        </Menu>
+      </div>
+    
     </div>
   )
 }
 
-export default DashboardTopPanel
+export default LeftPanel
