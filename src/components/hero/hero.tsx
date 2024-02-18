@@ -29,7 +29,7 @@ function Hero({
     if (scrollRevealRef.current.length > 0) {
       scrollRevealRef.current.map((ref) =>
         ScrollReveal().reveal(ref, {
-          duration: 10000,
+          duration: 2000,
           distance: '40px',
           easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
           origin: 'top',
@@ -53,7 +53,7 @@ function Hero({
   //function to redirect to dashboard
   function redirectToDashboard(){
     console.log('jsjsj');   
-    navigate('/dashboard-home');
+    navigate('/dashboard-main');
    
   
     
