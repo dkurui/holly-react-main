@@ -63,14 +63,14 @@ const LeftPanel = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <div>
+      <div style={{ width: '100%' }}>
         <img
           src={afrijour_logo}
           className={'h-20 w-20 object-contain'}
           alt="Logo"
           // call a function to redirect to home
           onClick={goHome}
-          style={{ cursor: 'pointer', height: '5rem' }}
+          style={{ cursor: 'pointer', width: 'auto' }}
         />
       </div>
       {/* Left Panel Content */}
@@ -96,7 +96,7 @@ const LeftPanel = () => {
               <MenuItem
                 className={`menu-item ${isActiveLink(to) ? 'menu-item-active' : ''}`}
                 icon={React.createElement(iconMapping[icon], {
-                  className: `icon text-3xl ${isActiveLink(to) ? 'active-link' : ''}`,
+                  className: `icon text2xl ${isActiveLink(to) ? 'active-link' : ''}`,
                 })}
                 //   onClick={() => setSidebarCollapsed(false)}
               >
@@ -108,7 +108,6 @@ const LeftPanel = () => {
           {/* <hr style={{ margin: '1rem 0', width: '90%', border: '1px solid #fefefe' }} /> */}
         </Menu>
       </div>
-    
     </div>
   )
 }
