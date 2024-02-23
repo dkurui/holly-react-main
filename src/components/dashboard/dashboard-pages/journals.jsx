@@ -8,7 +8,7 @@ import JournalsTable from './journals-table/journals-table'
 
 const Journals = () => {
   return (
-    <div className="container" style={{ overflow: 'hidden' }}>
+    <div className="container" style={{ overflow: 'hidden', maxWidth: '-webkit-fill-available' }}>
       <div className="left-panel">
         <LeftPanel />
       </div>

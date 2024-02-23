@@ -6,7 +6,7 @@ import FooterPanel from '../components/footer-panel'
 
 const Analytics = () => {
   return (
-    <div className="container" style={{ overflow: 'hidden' }}>
+    <div className="container" style={{ overflow: 'hidden', maxWidth: '-webkit-fill-available' }}>
       <div className="left-panel">
         <LeftPanel />
       </div>
