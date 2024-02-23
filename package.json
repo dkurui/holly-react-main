@@ -1,7 +1,7 @@
 {
-  "version": "4.0.0",
-  "name": "holly-react",
-  "description": "React version of Holly",
+  "version": "1.1.0",
+  "name": "afrijour",
+  "description": "African Journals Visibility Project",
   "author": "Luke McDonald (https://lukemcdonald.com/)",
   "homepage": "https://lukemcdonald.github.io/holly-react",
   "keywords": [],

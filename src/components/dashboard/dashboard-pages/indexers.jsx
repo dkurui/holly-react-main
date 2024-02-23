@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import './../dashboard-layout.css'
 import LeftPanel from '../components/left-panel'
 import TopPanel from '../components/top-panel'
@@ -6,6 +7,48 @@ import FooterPanel from '../components/footer-panel'
 import scopus from '../../../assets/indexers/scopus.png'
 import google_scholar from '../../../assets/indexers/g_scholar.png'
 import { Link } from 'react-router-dom'
+
+// const [indexerData, setIndexerData] = useState([])
+
+// useEffect(() => {
+//   // Fetch data from the backend endpoint (replace with actual fetch call)
+//   const dummyData = [
+//     {
+//       name: 'Scopus',
+//       image: 'https://via.placeholder.com/150',
+//       description: 'Scopus offers free features to non-subscribed users as Scopus Preview...',
+//       link: 'https://www.scopus.com/home.uri?zone=header&origin=sbrowse',
+//     },
+//     {
+//       name: 'Google Scholar',
+//       image: 'https://via.placeholder.com/150',
+//       description: 'Google Scholar is a freely accessible web search engine that indexes...',
+//       link: 'https://scholar.google.com/',
+//     },
+//     // Add more dummy data as needed
+//   ]
+
+//   // Set dummy data to state
+//   setIndexerData(dummyData)
+// }, [])
+
+const dummyData = [
+  {
+    name: 'Scopus',
+    image: scopus,
+    description:
+      '  Scopus offers free features to non-subscribed users as Scopus Preview. Researchers use Scopus Preview to assist with research, such as searching for authors and source metrics.',
+    link: 'https://www.scopus.com/home.uri?zone=header&origin=sbrowse',
+  },
+  {
+    name: 'Google Scholar',
+    image: google_scholar,
+    description:
+      '  Google Scholar is a freely accessible web search engine that indexes the full text or metadata of scholarly literature across an array of publishing formats and disciplines.',
+    link: 'https://scholar.google.com/',
+  },
+  // Add more dummy data as needed
+]
 
 const Indexers = () => {
   return (
@@ -16,9 +59,10 @@ const Indexers = () => {
       <div className="top-panel">
         <TopPanel />
       </div>
+
       <div className="main-content">
         {/* Main Content */}
-        {/* <LuPanelRightClose size={30} color="grey" />  */}
+        {/* Breadcrumb navigation */}
         <nav class="flex" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
@@ -72,112 +116,64 @@ const Indexers = () => {
           </ol>
         </nav>
         <hr className="mt-2" />
-        <p class="mb-1  mt-4 text-gray-500 dark:text-gray-400">
-          Journals in this platform are index in one or more inderxers highligted below
+        <p className="mb-1 mt-4 text-gray-500 dark:text-gray-400">
+          Journals in this platform are index in one or more indexers highlighted below
         </p>
-
-        <div class="grid grid-cols-2 gap-1 md:grid-cols-4">
-          <div class="mt-4 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
-            <a href="https://www.scopus.com/home.uri?zone=header&origin=sbrowse" target="blank">
-              <div
-                style={{
-                  maxHeight: '12rem',
-                  minHeight: '12rem',
-                  textAlign: '-webkit-center',
-                  padding: '1rem',
-                  alignContent: 'space-around',
-                  justifyContent: 'center',
-                }}
-              >
-                {<img src={scopus} />}
-              </div>
-              <img class="rounded-t-lg" src="/" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="https://www.scopus.com/home.uri?zone=header&origin=sbrowse">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Scopus
-                </h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Scopus offers free features to non-subscribed users as Scopus Preview. Researchers
-                use Scopus Preview to assist with research, such as searching for authors and
-                learning more about Scopus content coverage and source metrics.
-              </p>
-              <a
-                href="https://www.scopus.com/home.uri?zone=header&origin=sbrowse"
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                target="blank"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
+        <div className="grid grid-cols-2 gap-1 md:grid-cols-4">
+          {dummyData.map((indexer, index) => (
+            <div
+              key={index}
+              className="mt-4 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
+            >
+              <a href={indexer.link} target="_blank" rel="noopener noreferrer">
+                <div
+                  style={{
+                    maxHeight: '12rem',
+                    minHeight: '12rem',
+                    textAlign: '-webkit-center',
+                    padding: '1rem',
+                    alignContent: 'space-around',
+                    justifyContent: 'center',
+                  }}
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
+                  <img src={indexer.image} alt={indexer.name} style={{ maxHeight: 'inherit' }} />
+                </div>
               </a>
-            </div>
-          </div>
-          <div class="mt-4 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
-            <a href="https://scholar.google.com/">
-              <div
-                style={{
-                  maxHeight: '12rem',
-                  minHeight: '12rem',
-                  textAlign: '-webkit-center',
-                  padding: '1rem',
-                  alignContent: 'space-around',
-                  justifyContent: 'center',
-                }}
-              >
-                {<img src={google_scholar} style={{ maxHeight: 'inherit' }} />}
-              </div>
-            </a>
-            <div class="p-5">
-              <a href="https://scholar.google.com/" target="blank">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Google Scholar
-                </h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Google Scholar is a freely accessible web search engine that indexes the full text
-                or metadata of scholarly literature across an array of publishing formats and
-                disciplines.
-              </p>
-              <a
-                href="https://scholar.google.com/"
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                target="blank"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
+              <div className="p-5">
+                <a href={indexer.link} target="_blank" rel="noopener noreferrer">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {indexer.name}
+                  </h5>
+                </a>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {indexer.description}
+                </p>
+                <a
+                  href={indexer.link}
+                  className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
+                  Read more
+                  <svg
+                    className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 5h12m0 0L9 1m4 4L9 9"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
       <div className="bottom-panel">

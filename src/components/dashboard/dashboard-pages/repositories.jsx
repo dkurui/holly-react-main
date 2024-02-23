@@ -7,6 +7,24 @@ import sabinet from '../../../assets/repositories/sabinet.png'
 import ajol from '../../../assets/repositories/ajol.png'
 import { Link } from 'react-router-dom'
 
+const dummyData = [
+  {
+    name: 'Sabinet',
+    image: sabinet,
+    description:
+      '    Sabinet is an online database of full text South and Southern African journals. It includes coverage of a wide variety of topic areas; much of its content is in English, but there are also publications in various other European and African languages (particularly Afrikaans)',
+    link: 'https://sabinet.co.za/',
+  },
+  {
+    name: 'AJOL',
+    image: ajol,
+    description:
+      '    African Journals OnLine is a South African non-profit organisation, which is in the      headquarters of Grahamstown, it is dedicated to improve the online visibility and access to the published scholarly research of African-based academics.',
+    link: 'https://www.ajol.info/index.php/ajol',
+  },
+  // Add more dummy data as needed
+]
+
 const Repositories = () => {
   return (
     <div className="container" style={{ overflow: 'hidden', maxWidth: '-webkit-fill-available' }}>
@@ -16,9 +34,10 @@ const Repositories = () => {
       <div className="top-panel">
         <TopPanel />
       </div>
+
       <div className="main-content">
         {/* Main Content */}
-        {/* <LuPanelRightClose size={30} color="grey" />  */}
+        {/* Breadcrumb navigation */}
         <nav class="flex" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
@@ -72,115 +91,64 @@ const Repositories = () => {
           </ol>
         </nav>
         <hr className="mt-2" />
-        <p class="mb-1  mt-4 text-gray-500 dark:text-gray-400">
+        <p className="mb-1 mt-4 text-gray-500 dark:text-gray-400">
           Journals in this platform are sourced from these repsitories
         </p>
-
-        <div class="grid grid-cols-2 gap-1 md:grid-cols-4">
-          <div class="mt-4 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
-            <a href="https://sabinet.co.za/" target="blank">
-              <div
-                style={{
-                  maxHeight: '12rem',
-                  minHeight: '12rem',
-                  textAlign: '-webkit-center',
-                  padding: '1rem',
-                  display: 'grid',
-                  alignContent: 'space-around',
-                  justifyContent: 'space-between',
-                }}
-              >
-                {<img src={sabinet} />}
-              </div>
-              <img class="rounded-t-lg" src="/" alt="" />
-            </a>
-            <div class="p-5">
-              <a href="https://sabinet.co.za/" target="blank">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  SABINET
-                </h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Sabinet is an online database of full text South and Southern African journals. It
-                includes coverage of a wide variety of topic areas; much of its content is in
-                English, but there are also publications in various other European and African
-                languages (particularly Afrikaans).{' '}
-              </p>
-              <a
-                href="https://sabinet.co.za/"
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                target="blank"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
+        <div className="grid grid-cols-2 gap-1 md:grid-cols-4">
+          {dummyData.map((indexer, index) => (
+            <div
+              key={index}
+              className="mt-4 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
+            >
+              <a href={indexer.link} target="_blank" rel="noopener noreferrer">
+                <div
+                  style={{
+                    maxHeight: '12rem',
+                    minHeight: '12rem',
+                    textAlign: '-webkit-center',
+                    padding: '1rem',
+                    alignContent: 'space-around',
+                    justifyContent: 'center',
+                  }}
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
+                  <img src={indexer.image} alt={indexer.name} style={{ maxHeight: 'inherit' }} />
+                </div>
               </a>
-            </div>
-          </div>
-          <div class="mt-4 max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
-            <a href="https://www.ajol.info/index.php/ajol">
-              <div
-                style={{
-                  maxHeight: '12rem',
-                  minHeight: '12rem',
-                  textAlign: '-webkit-center',
-                  padding: '1rem',
-                  display: 'grid',
-                  alignContent: 'space-around',
-                  justifyContent: 'space-between',
-                }}
-              >
-                {<img src={ajol} />}
-              </div>
-            </a>
-            <div class="p-5">
-              <a href="https://www.ajol.info/index.php/ajol" target="blank">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  AJOL
-                </h5>
-              </a>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                African Journals OnLine is a South African non-profit organisation, which is in the
-                headquarters of Grahamstown, it is dedicated to improve the online visibility and
-                access to the published scholarly research of African-based academics.
-              </p>
-              <a
-                href="https://www.ajol.info/index.php/ajol"
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                target="blank"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
+              <div className="p-5">
+                <a href={indexer.link} target="_blank" rel="noopener noreferrer">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {indexer.name}
+                  </h5>
+                </a>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {indexer.description}
+                </p>
+                <a
+                  href={indexer.link}
+                  className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
+                  Read more
+                  <svg
+                    className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M1 5h12m0 0L9 1m4 4L9 9"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
       <div className="bottom-panel">

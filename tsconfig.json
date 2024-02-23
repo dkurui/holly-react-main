@@ -19,6 +19,6 @@
     "target": "ESNext",
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/components/header/header.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/components/header/header.tsx", "vite.config.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
