@@ -13,6 +13,7 @@ import Indexers from './components/dashboard/dashboard-pages/indexers';
 import Journals from './components/dashboard/dashboard-pages/journals';
 import Repositories from './components/dashboard/dashboard-pages/repositories';
 import NewsUpdates from './components/dashboard/dashboard-pages/news-updates';
+import Journal from './components/dashboard/dashboard-pages/journal';
 
 
 
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="reviewers" element={<Reviewers />} />  
           <Route path="indexers" element={<Indexers />} />         
           <Route path="journals" element={<Journals />} />         
+          <Route path="journal" element={<Journal />} />         
           <Route path="repositories" element={<Repositories />} />         
           <Route path="news" element={<NewsUpdates />} />         
 
