@@ -1,5 +1,5 @@
 import React from 'react'
-import aphrc_logo from '../../../assets/aphrc.png'
+// import aphrc_logo from '../../../assets/aphrc.png'
 
 const FooterPanel = () => {
   return (
@@ -17,7 +17,7 @@ const FooterPanel = () => {
             Powered by:{' '}
           </p>
 
-          <img src={aphrc_logo} alt="Logo" style={{ height: '3rem', marginBottom: '1rem' }} />
+{/*           <img src={aphrc_logo} alt="Logo" style={{ height: '3rem', marginBottom: '1rem' }} /> */}
         </span>
       </div>
     </div>
