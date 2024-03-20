@@ -17,7 +17,8 @@ import { AiTwotoneSetting } from 'react-icons/ai'
 import { LuNewspaper } from 'react-icons/lu'
 import { GrAnalytics } from 'react-icons/gr'
 
-import afrijour_logo from '../../../assets/afrijour-logo.png'
+// import afrijour_logo from '../../../assets/afrijour-logo.png'
+import afrijour_logo from '../../../assets/logo.png'
 
 // Main navigation links
 const mainNavLinks = [

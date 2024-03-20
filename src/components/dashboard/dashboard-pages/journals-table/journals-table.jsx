@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom'
 
 const JournalsTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [recordsPerPage, setRecordsPerPage] = useState(10)
+  const [recordsPerPage, setRecordsPerPage] = useState(15)
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' })
+  const [searchQuery, setSearchQuery] = useState('')
 
   // Function to handle sorting
   const handleSort = (key) => {
@@ -318,13 +319,72 @@ const JournalsTable = ({ data }) => {
     },
   ]
 
+  // Filter data based on search query
+  const filteredJournals = journals.filter((journal) =>
+    journal.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
+
   // Sorting and paginating data
-  const sortedData = sortData(journals)
+  const sortedData = sortData(filteredJournals)
+  
   const paginatedData = paginate(sortedData, currentPage, recordsPerPage)
 
   return (
     <div>
+      <div className="w-f" style={{ display: 'grid', justifyContent: 'end' }}>
+        <form class="mx-auto  " style={{ width: '20rem', margin: '1rem' }}>
+          <label
+            for="default-search"
+            class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Search
+          </label>
+          <div class="relative">
+            <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+              <svg
+                class="h-4 w-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
+            <input
+              type="search"
+              id="default-search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              class="block h-10 w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-gray-500 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-black-500 dark:focus:ring-black-500"
+              placeholder="Search Journal by title..."
+              required
+              style={{ borderRadius: '1rem' }}
+            />
+            {/* <button
+              type="submit"
+              class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Search
+            </button> */}
+          </div>
+        </form>
+      </div>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        {/* <input
+          type="text"
+          placeholder="Search by title..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="block w-full border border-gray-300 bg-gray-50 p-2.5 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        /> */}
+
         <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
           <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr style={{ textAlign: 'center' }}>
@@ -415,7 +475,7 @@ const JournalsTable = ({ data }) => {
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
                   <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    Page: {currentPage} of {Math.ceil(journals.length / recordsPerPage)}
+                    Page: {currentPage} of {Math.ceil(filteredJournals.length / recordsPerPage)}
                   </div>
                 </td>
                 <td>
@@ -448,9 +508,10 @@ const JournalsTable = ({ data }) => {
                     onChange={(e) => setRecordsPerPage(parseInt(e.target.value))}
                     class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                   >
-                    <option value={5}>5 Records Per Page</option>
-                    <option value={10}>10 Records Per Page</option>
-                    <option value={20}>20 Records Per Page</option>
+                    <option value={10}>10np Records Per Page</option>
+                    <option value={15}>15 Records Per Page</option>
+                    <option value={30}>30 Records Per Page</option>
+                    <option value={50}>50 Records Per Page</option>
                   </select>
                 </td>
               </tr>

@@ -30,12 +30,13 @@ function Article({
 
             {children}
           </ArticleContent>
+        
 
-          {imageSrc && (
+          {/* {imageSrc && (
             <ArticleMedia>
               <ArticleImage alt={imageAlt!} src={imageSrc} />
             </ArticleMedia>
-          )}
+          )} */}
         </div>
       </div>
     </article>

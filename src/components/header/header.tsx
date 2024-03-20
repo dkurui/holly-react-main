@@ -1,6 +1,9 @@
 // import { Logo } from '@/components/logo'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/APHRC.png'
+// import logo from '../../assets/APHRC.png'
+import logo from '../../assets/logo.png'
+import { SocialLinks } from '../social-links'
+import { Menu } from '../menu'
 // import afrijour_logo from '../../assets/afrijour-logo.png'
 
 function Header({ title }: { title?: string }) {
@@ -12,10 +15,13 @@ function Header({ title }: { title?: string }) {
             <Link to="/" className="flex items-center gap-2 no-underline">
               {/* <Logo /> */}
               {/* <img src={afrijour_logo} alt="logo" style={{height:'10rem'}}/> */}
-              <img src={logo} alt="logo" style={{height:'4rem', marginLeft:'-1rem'}}/>
+              <img src={logo} alt="logo" style={{height:'8rem', marginLeft:'-1rem'}}/>
               <span>{title}</span>
             </Link>
           </h1>
+          <nav className="flex flex-col items-center mt-10 gap-6 lg:order-1 lg:items-end">
+            <Menu className="flex gap-4" />
+          </nav>
         </div>
       </div>
     </header>

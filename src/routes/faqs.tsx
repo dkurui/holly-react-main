@@ -1,6 +1,7 @@
 import { Article } from '@/components/article'
 import { Layout } from '@/components/layout'
 
+
 export default function FaqsPage() {
   return (
     <Layout>
