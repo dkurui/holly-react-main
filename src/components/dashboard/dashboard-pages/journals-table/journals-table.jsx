@@ -4,11 +4,13 @@ import { MdFirstPage } from 'react-icons/md'
 import { MdLastPage } from 'react-icons/md'
 import { GrPrevious } from 'react-icons/gr'
 import { GrNext } from 'react-icons/gr'
+import { Link } from 'react-router-dom'
 
 const JournalsTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [recordsPerPage, setRecordsPerPage] = useState(10)
+  const [recordsPerPage, setRecordsPerPage] = useState(15)
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' })
+  const [searchQuery, setSearchQuery] = useState('')
 
   // Function to handle sorting
   const handleSort = (key) => {
@@ -53,6 +55,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 25,
       published: true,
       DOI: 'doi:10.1234/abcd.5678',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 2,
@@ -64,6 +72,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 42,
       published: true,
       DOI: 'doi:10.5678/efgh.9012',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 3,
@@ -75,6 +89,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 18,
       published: true,
       DOI: 'doi:10.9012/ijkl.3456',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 4,
@@ -86,6 +106,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 36,
       published: true,
       DOI: 'doi:10.3456/mnop.7890',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 5,
@@ -97,6 +123,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 30,
       published: true,
       DOI: 'doi:10.6789/qrst.1234',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 6,
@@ -108,6 +140,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 22,
       published: true,
       DOI: 'doi:10.2345/uvwx.5678',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 7,
@@ -119,6 +157,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 14,
       published: true,
       DOI: 'doi:10.5678/yzab.9012',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 8,
@@ -130,6 +174,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 28,
       published: true,
       DOI: 'doi:10.9012/cdef.3456',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 9,
@@ -141,6 +191,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 20,
       published: true,
       DOI: 'doi:10.3456/ghij.7890',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 10,
@@ -152,6 +208,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 35,
       published: true,
       DOI: 'doi:10.6789/klmn.1234',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 11,
@@ -163,6 +225,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 19,
       published: true,
       DOI: 'doi:10.2345/opqr.5678',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 12,
@@ -174,6 +242,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 26,
       published: true,
       DOI: 'doi:10.5678/stuv.9012',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 13,
@@ -185,6 +259,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 21,
       published: true,
       DOI: 'doi:10.9012/wxyz.3456',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 14,
@@ -196,6 +276,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 17,
       published: true,
       DOI: 'doi:10.3456/abcd.7890',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 15,
@@ -207,6 +293,12 @@ const JournalsTable = ({ data }) => {
       citation_count: 33,
       published: true,
       DOI: 'doi:10.6789/efgh.1234',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
     {
       id: 16,
@@ -218,18 +310,82 @@ const JournalsTable = ({ data }) => {
       citation_count: 24,
       published: true,
       DOI: 'doi:10.2345/ijkl.5678',
+      eISSN: 2773 - 3807,
+      print_ISSN: 2716 - 9421,
+      desc: 'Advanced Research in Economics and Business Strategy is a peer reviewed scientific biannual international and free of charge, open-access journal, issued regularly by Faculty of Economics, Business and Management Sciences - University of Oran 2, in two issues (June and December) from each year. The Journal is interested in the following fields of research: Business, Management and Accounting; Economics, Econometrics and Finance.',
+      current_issue:
+        'Vol 4 No 2 (2023): Advanced Research in Economics and Business Strategy Journal-December 2023',
+      image: 'https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg',
     },
   ]
 
+  // Filter data based on search query
+  const filteredJournals = journals.filter((journal) =>
+    journal.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
+
   // Sorting and paginating data
-  const sortedData = sortData(journals)
+  const sortedData = sortData(filteredJournals)
+  
   const paginatedData = paginate(sortedData, currentPage, recordsPerPage)
 
   return (
     <div>
+      <div className="w-f" style={{ display: 'grid', justifyContent: 'end' }}>
+        <form class="mx-auto  " style={{ width: '20rem', margin: '1rem' }}>
+          <label
+            for="default-search"
+            class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Search
+          </label>
+          <div class="relative">
+            <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+              <svg
+                class="h-4 w-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
+            <input
+              type="search"
+              id="default-search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              class="block h-10 w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-gray-500 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-black-500 dark:focus:ring-black-500"
+              placeholder="Search Journal by title..."
+              required
+              style={{ borderRadius: '1rem' }}
+            />
+            {/* <button
+              type="submit"
+              class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Search
+            </button> */}
+          </div>
+        </form>
+      </div>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-  
-        <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        {/* <input
+          type="text"
+          placeholder="Search by title..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="block w-full border border-gray-300 bg-gray-50 p-2.5 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        /> */}
+
+        <table class="w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
           <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr style={{ textAlign: 'center' }}>
               <th scope="col" class="px-6 py-3" onClick={() => handleSort('title')}>
@@ -271,7 +427,10 @@ const JournalsTable = ({ data }) => {
                   scope="row"
                   class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
                 >
-                  {journal.title}
+                  {/* {journal.title} */}
+                  {/* <a href={`journal-details?id=${journal.id}`}>{journal.title}</a> */}
+                  {/* <Link to={`/catalog/product/${row?.original?.id}`}>{row.original.name}</Link> */}
+                  <Link to={`/journal-details/${journal?.id}`}>{journal.title}</Link>
                 </th>
 
                 <td>{journal.author}</td>
@@ -294,7 +453,7 @@ const JournalsTable = ({ data }) => {
           }}
         >
           <div>
-            <table class="w-full text-left mt-2 text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+            <table class="mt-2 w-full text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
               <tr>
                 <td style={{ verticalAlign: 'bottom' }}>
                   <button
@@ -316,7 +475,7 @@ const JournalsTable = ({ data }) => {
                 </td>
                 <td style={{ verticalAlign: 'top' }}>
                   <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                    Page: {currentPage} of {Math.ceil(journals.length / recordsPerPage)}
+                    Page: {currentPage} of {Math.ceil(filteredJournals.length / recordsPerPage)}
                   </div>
                 </td>
                 <td>
@@ -347,11 +506,12 @@ const JournalsTable = ({ data }) => {
                     }}
                     value={recordsPerPage}
                     onChange={(e) => setRecordsPerPage(parseInt(e.target.value))}
-                    class="focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                   >
-                    <option value={5}>5 Records Per Page</option>
-                    <option value={10}>10 Records Per Page</option>
-                    <option value={20}>20 Records Per Page</option>
+                    <option value={10}>10np Records Per Page</option>
+                    <option value={15}>15 Records Per Page</option>
+                    <option value={30}>30 Records Per Page</option>
+                    <option value={50}>50 Records Per Page</option>
                   </select>
                 </td>
               </tr>

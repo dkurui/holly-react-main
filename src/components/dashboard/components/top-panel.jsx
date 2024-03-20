@@ -14,7 +14,7 @@ const TopPanel = () => {
 
           <td>
             <p
-              style={{ fontSize: '22px', color: 'grey', marginLeft: '1rem', marginBottom: '-10px' }}
+              style={{ fontSize: '22px', color: 'grey', marginLeft: '1rem'}}
             >
               Welcome to African Journals Dashboard
             </p>

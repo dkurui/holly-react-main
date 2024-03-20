@@ -8,6 +8,7 @@ function MenuItem({ name, to }: { name: string; to: string }) {
           isActive ? 'border-b text-white' : 'text-white hover:border-b'
         }
         to={to}
+        style={{color:'#6A7280'}}
       >
         {name}
       </NavLink>

@@ -9,9 +9,10 @@ const MENU_ITEMS = [
 
 function Menu({ className }: { className?: string }) {
   return (
-    <ul className={className} style={{fontSize:'16px'}}>
+    //Gve custom color
+    <ul className={className} style={{color: 'red', fontSize:'14px' }}>
       {MENU_ITEMS.map((link) => (
-        <MenuItem key={link.name} to={link.to} name={link.name} />
+        <MenuItem key={link.name} to={link.to} name={link.name}  />
       ))}
     </ul>
   )
