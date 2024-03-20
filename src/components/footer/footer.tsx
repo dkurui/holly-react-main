@@ -1,6 +1,6 @@
 import { Menu } from '@/components/menu'
 import { SocialLinks } from '@/components/social-links'
-import logo from '../../assets/APHRC.png'
+import logo from '../../assets/aphrc.png'
 
 function Footer() {
   return (
